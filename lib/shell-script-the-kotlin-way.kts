@@ -18,3 +18,16 @@ runBlocking {
     }.join()
     println("they all worked!!!!")
 }
+
+fun CommandResult.showResult() {
+    apply {
+        if (stdout.isNotEmpty())
+            println(stdout.trim())
+        if (stderr.isNotEmpty())
+            err.println(stderr.trim())
+        if (exitCode != 0) {
+            println("failed with exit code $exitCode")
+            System.exit(1)
+        }
+    }
+}
