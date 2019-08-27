@@ -15,15 +15,6 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 //const val fullBlockChar = '█'
 
-fun main(args: Array<String>) =
-        args
-                .or("hello there")
-                .joinToString(" ")
-                .let {
-                    println(it)
-                    println(createQrAnsiString(it))
-                }
-
 fun createQrImage(qrFile: File, qrCodeText: String, size: Int, fileType: String) {
     // Create the ByteMatrix for the QR-Code that encodes the given String
     val hintMap = mapOf(
@@ -78,9 +69,3 @@ fun createQrAnsiString(qrCodeText: String): String {
         line
     }.joinToString("\n")
 }
-
-private fun Array<String>.or(string: String) =
-        if (isEmpty())
-            arrayOf(string)
-        else
-            this

@@ -1,0 +1,17 @@
+#!/usr/bin/env kscript
+
+//INCLUDE ../lib/qrlib.kt
+
+args
+	.or("hello there")
+	.joinToString(" ")
+	.let {
+		println(it)
+		println(createQrAnsiString(it))
+	}
+
+fun Array<String>.or(string: String) =
+        if (isEmpty())
+            arrayOf(string)
+        else
+            this
